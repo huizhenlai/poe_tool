@@ -36,7 +36,7 @@ class Deck(QWidget):
         x_t = x_monitor_res/1920
         y_t = y_monitor_res/1080
         
-        A =  [216 * x_t, 622 * y_t] 
+        A =  [492 * x_t, 407 * y_t] 
         B =  [1511 * x_t, 720 *y_t]
         self.A = A
         self.B = B
@@ -47,10 +47,11 @@ class Deck(QWidget):
         
     def my_start(self):
         time.sleep(3)
-        while True:
+        valueable_card = ["明镜","药剂师","虔诚的代价","慈父之爱","失智猫咪","一厢情愿","永恒不朽","恶魔","疯医","无根之火","窒息愧疚","兄弟赐福","兄弟之容","二刀流","神圣的正义","孤胆英雄","月影的子嗣","黑暗之苦","无尽黑暗","跨冰之恋","出老千","锃亮的宝箱","来生之美","万事皆空","噬界者","持盾人","钱与权","照料者","七年厄运","生命之树"]
 
+        while True:
             num = 0
-            ran_time = 0.1
+            ran_time = 0.2
             pyautogui.moveTo(self.A)
             time.sleep(ran_time)
             pyautogui.click(button='right')
@@ -61,20 +62,22 @@ class Deck(QWidget):
             time.sleep(ran_time)
 
             pyautogui.click(button='left')
-
+            time.sleep(ran_time)
+            pyautogui.hotkey('ctrl', 'c')
+            copy_text = pyperclip.paste()
+            for i in valueable_card:
+                if i in copy_text:
+                    print("已出现: ",i)
             time.sleep(ran_time)
             pyautogui.keyDown('ctrl')
             time.sleep(ran_time)
             pyautogui.click(button='left')
             time.sleep(ran_time)
             pyautogui.keyUp('ctrl')
-
-        num += 1
-        self.ui.lineEdit_cal.setText(str(num))
-
+            num += 1
+            self.ui.lineEdit_cal.setText(str(num))
 
     def calculate(self):
-        pass
-
+       pass
     def clear(self):
         self.num = 0

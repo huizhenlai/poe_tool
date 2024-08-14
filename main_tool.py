@@ -6,7 +6,7 @@ import time
 import random
 import pyperclip
 from pynput.mouse import Listener, Button
-import keyboard
+# import keyboard
 
 from Alteration_Class import Alteration
 from Sextant_Class import Sextant
